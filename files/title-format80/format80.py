@@ -1,7 +1,7 @@
 import pandas as pd
 
 while True:
-   e = input('Title: ').upper()
+   e = input('Title: ').upper().strip()
    b = 80 - int(input('Indentation: '))
    t = len(e) + 6
    i = int((b - t) / 2)
