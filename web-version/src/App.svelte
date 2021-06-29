@@ -2,8 +2,10 @@
   let campo = "";
   let indentacao = 2;
   let resultado;
+  let show = false;
 
   async function ok() {
+    show = true;
     const titulo = campo.trim().toUpperCase();
     const area = 80 - indentacao;
     const texto = titulo.length + 6;
@@ -12,10 +14,11 @@
     const fim = area - texto - inicio;
     const msg = `/*${"*".repeat(inicio)} ${titulo} ${"*".repeat(fim)}*/`;
     resultado.value = msg;
-    await resultado.select();
-    await resultado.setSelectionRange(0, 99999);
-    await document.execCommand("copy");
+    resultado.select();
+    resultado.setSelectionRange(0, 99999);
+    document.execCommand("copy");
     campo = "";
+    setTimeout(() => (show = false), 3000);
   }
 </script>
 
@@ -92,6 +95,11 @@
     position: fixed;
     top: 100%;
   }
+
+  span {
+    position: fixed;
+    margin-top: 13rem;
+  }
 </style>
 
 <div id="corpo">
@@ -107,6 +115,9 @@
       </div>
       <button on:click={ok}>OK</button>
     </div>
+    {#if show}
+      <span>Copiado para a área de transferência</span>
+    {/if}
   </div>
 </div>
 
