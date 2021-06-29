@@ -446,6 +446,36 @@ var app = (function () {
 
     const file = "src\\App.svelte";
 
+    // (118:4) {#if show}
+    function create_if_block(ctx) {
+    	let span;
+
+    	const block = {
+    		c: function create() {
+    			span = element("span");
+    			span.textContent = "Copiado para a área de transferência";
+    			attr_dev(span, "class", "svelte-fp6ar0");
+    			add_location(span, file, 118, 6, 2266);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, span, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(span);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(118:4) {#if show}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
     function create_fragment(ctx) {
     	let div3;
     	let div2;
@@ -461,9 +491,11 @@ var app = (function () {
     	let t5;
     	let button;
     	let t7;
+    	let t8;
     	let input2;
     	let mounted;
     	let dispose;
+    	let if_block = /*show*/ ctx[3] && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
@@ -484,38 +516,40 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "OK";
     			t7 = space();
+    			if (if_block) if_block.c();
+    			t8 = space();
     			input2 = element("input");
-    			attr_dev(h3, "class", "svelte-1c6chdj");
-    			add_location(h3, file, 98, 4, 1780);
+    			attr_dev(h3, "class", "svelte-fp6ar0");
+    			add_location(h3, file, 106, 4, 1901);
     			attr_dev(input0, "id", "entrada");
     			attr_dev(input0, "type", "text");
-    			attr_dev(input0, "class", "svelte-1c6chdj");
-    			add_location(input0, file, 100, 4, 1833);
+    			attr_dev(input0, "class", "svelte-fp6ar0");
+    			add_location(input0, file, 108, 4, 1954);
     			attr_dev(label, "for", "indentacao");
-    			attr_dev(label, "class", "svelte-1c6chdj");
-    			add_location(label, file, 104, 8, 1944);
+    			attr_dev(label, "class", "svelte-fp6ar0");
+    			add_location(label, file, 112, 8, 2065);
     			attr_dev(input1, "id", "indentacao");
     			attr_dev(input1, "type", "number");
-    			attr_dev(input1, "class", "svelte-1c6chdj");
-    			add_location(input1, file, 105, 8, 1996);
+    			attr_dev(input1, "class", "svelte-fp6ar0");
+    			add_location(input1, file, 113, 8, 2117);
     			attr_dev(div0, "id", "indent");
-    			attr_dev(div0, "class", "svelte-1c6chdj");
-    			add_location(div0, file, 103, 6, 1918);
-    			attr_dev(button, "class", "svelte-1c6chdj");
-    			add_location(button, file, 107, 6, 2079);
+    			attr_dev(div0, "class", "svelte-fp6ar0");
+    			add_location(div0, file, 111, 6, 2039);
+    			attr_dev(button, "class", "svelte-fp6ar0");
+    			add_location(button, file, 115, 6, 2200);
     			attr_dev(div1, "id", "controle");
-    			attr_dev(div1, "class", "svelte-1c6chdj");
-    			add_location(div1, file, 102, 4, 1892);
+    			attr_dev(div1, "class", "svelte-fp6ar0");
+    			add_location(div1, file, 110, 4, 2013);
     			attr_dev(div2, "id", "conteudo");
-    			attr_dev(div2, "class", "svelte-1c6chdj");
-    			add_location(div2, file, 97, 2, 1756);
+    			attr_dev(div2, "class", "svelte-fp6ar0");
+    			add_location(div2, file, 105, 2, 1877);
     			attr_dev(div3, "id", "corpo");
-    			attr_dev(div3, "class", "svelte-1c6chdj");
-    			add_location(div3, file, 96, 0, 1737);
+    			attr_dev(div3, "class", "svelte-fp6ar0");
+    			add_location(div3, file, 104, 0, 1858);
     			attr_dev(input2, "type", "text");
     			attr_dev(input2, "id", "sumiu");
-    			attr_dev(input2, "class", "svelte-1c6chdj");
-    			add_location(input2, file, 112, 0, 2141);
+    			attr_dev(input2, "class", "svelte-fp6ar0");
+    			add_location(input2, file, 123, 0, 2343);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -536,15 +570,17 @@ var app = (function () {
     			set_input_value(input1, /*indentacao*/ ctx[1]);
     			append_dev(div1, t5);
     			append_dev(div1, button);
-    			insert_dev(target, t7, anchor);
+    			append_dev(div2, t7);
+    			if (if_block) if_block.m(div2, null);
+    			insert_dev(target, t8, anchor);
     			insert_dev(target, input2, anchor);
-    			/*input2_binding*/ ctx[6](input2);
+    			/*input2_binding*/ ctx[7](input2);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[4]),
-    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[5]),
-    					listen_dev(button, "click", /*ok*/ ctx[3], false, false, false)
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[5]),
+    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[6]),
+    					listen_dev(button, "click", /*ok*/ ctx[4], false, false, false)
     				];
 
     				mounted = true;
@@ -558,14 +594,26 @@ var app = (function () {
     			if (dirty & /*indentacao*/ 2 && to_number(input1.value) !== /*indentacao*/ ctx[1]) {
     				set_input_value(input1, /*indentacao*/ ctx[1]);
     			}
+
+    			if (/*show*/ ctx[3]) {
+    				if (if_block) ; else {
+    					if_block = create_if_block(ctx);
+    					if_block.c();
+    					if_block.m(div2, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div3);
-    			if (detaching) detach_dev(t7);
+    			if (if_block) if_block.d();
+    			if (detaching) detach_dev(t8);
     			if (detaching) detach_dev(input2);
-    			/*input2_binding*/ ctx[6](null);
+    			/*input2_binding*/ ctx[7](null);
     			mounted = false;
     			run_all(dispose);
     		}
@@ -588,8 +636,10 @@ var app = (function () {
     	let campo = "";
     	let indentacao = 2;
     	let resultado;
+    	let show = false;
 
     	async function ok() {
+    		$$invalidate(3, show = true);
     		const titulo = campo.trim().toUpperCase();
     		const area = 80 - indentacao;
     		const texto = titulo.length + 6;
@@ -598,10 +648,11 @@ var app = (function () {
     		const fim = area - texto - inicio;
     		const msg = `/*${("*").repeat(inicio)} ${titulo} ${("*").repeat(fim)}*/`;
     		$$invalidate(2, resultado.value = msg, resultado);
-    		await resultado.select();
-    		await resultado.setSelectionRange(0, 99999);
-    		await document.execCommand("copy");
+    		resultado.select();
+    		resultado.setSelectionRange(0, 99999);
+    		document.execCommand("copy");
     		$$invalidate(0, campo = "");
+    		setTimeout(() => $$invalidate(3, show = false), 3000);
     	}
 
     	const writable_props = [];
@@ -627,12 +678,13 @@ var app = (function () {
     		});
     	}
 
-    	$$self.$capture_state = () => ({ campo, indentacao, resultado, ok });
+    	$$self.$capture_state = () => ({ campo, indentacao, resultado, show, ok });
 
     	$$self.$inject_state = $$props => {
     		if ("campo" in $$props) $$invalidate(0, campo = $$props.campo);
     		if ("indentacao" in $$props) $$invalidate(1, indentacao = $$props.indentacao);
     		if ("resultado" in $$props) $$invalidate(2, resultado = $$props.resultado);
+    		if ("show" in $$props) $$invalidate(3, show = $$props.show);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -643,6 +695,7 @@ var app = (function () {
     		campo,
     		indentacao,
     		resultado,
+    		show,
     		ok,
     		input0_input_handler,
     		input1_input_handler,
