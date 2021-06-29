@@ -1,30 +1,58 @@
 <script>
-	export let name;
+  function ok() {}
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
+  * {
+    font-family: sans-serif;
+  }
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
+  #corpo {
+    display: flex;
+    background-color: #ddd;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+  #conteudo {
+    width: 25%;
+    height: 60%;
+    background-color: #eee;
+    border-radius: 0.5rem;
+    border-width: 1rem;
+    border-color: blue;
+    border: 0.1rem solid black;
+    padding: 1rem;
+
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  input {
+    width: 90%;
+    font-size: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  button {
+    width: 3rem;
+    height: 2rem;
+  }
 </style>
+
+<div id="corpo">
+  <div id="conteudo">
+    <h3>Insira o título abaixo e pressione OK:</h3>
+    <input type="text" />
+    <button on:click={ok}>OK</button>
+  </div>
+</div>
