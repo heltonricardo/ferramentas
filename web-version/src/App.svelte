@@ -1,7 +1,8 @@
 <script>
+  import FormataAbnt from "./FormataAbnt/FormataAbnt.svelte";
   import FormataCodigo from "./FormataCodigo/FormataCodigo.svelte";
 
-  let escolha = 1;
+  let escolha = 2;
 </script>
 
 <style>
@@ -28,5 +29,7 @@
 
   {#if escolha === 1}
     <FormataCodigo />
+  {:else if escolha === 2}
+    <FormataAbnt />
   {/if}
 </div>
