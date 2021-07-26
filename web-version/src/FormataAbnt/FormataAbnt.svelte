@@ -39,8 +39,9 @@
     //   acesso
     // )}.`;
 
-    resultado.value = `${site.toUpperCase()}. ${titulo}. Disponível em: \
-    <${link}>. Acesso em: ${data(acesso)}.`;
+    resultado.value = `${site.toUpperCase()}. ${titulo}. Disponível em: <${link}>. Acesso em: ${data(
+      acesso
+    )}.`;
 
     show = true;
     resultado.select();
@@ -94,7 +95,7 @@
 
   #sumiu {
     position: fixed;
-    top: 100%;
+    top: 105%;
   }
 
   span {
