@@ -9,6 +9,44 @@
   let titulo = "";
   let publicacao = hojestr;
   let acesso = hojestr;
+  let resultado = "";
+  let show = false;
+  
+  function data(date) {
+    const mes = {
+      1: "jan.",
+      2: "fev.",
+      3: "mar.",
+      4: "abr.",
+      5: "maio",
+      6: "jun.",
+      7: "jul.",
+      8: "ago.",
+      9: "set.",
+      10: "out.",
+      11: "nov.",
+      12: "dez.",
+    };
+    
+    return `${Number(date.split("-")[2])} ${
+      mes[Number(date.split("-")[1])]
+    } ${Number(date.split("-")[0])}`;
+  }
+  
+  function ok() {
+    show = true;
+    resultado.value = `${titulo}. [S. l.], ${data(
+      publicacao
+      )}. Disponível em: ${link}. Acesso em: ${data(acesso)}.`;
+      resultado.select();
+      resultado.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      link = "";
+      titulo = "";
+      publicacao = hojestr;
+      acesso = hojestr;
+    setTimeout(() => (show = false), 3000);
+  }
 </script>
 
 <style>
@@ -47,6 +85,17 @@
     width: fit-content;
     align-self: center;
   }
+
+  #sumiu {
+    position: fixed;
+    top: 100%;
+  }
+
+  span {
+    position: fixed;
+    margin-top: 22rem;
+    align-self: center;
+  }
 </style>
 
 <div id="conteudo">
@@ -70,5 +119,11 @@
     <input type="date" id="acesso" bind:value={acesso} />
   </label>
 
-  <button>OK</button>
+  <button on:click={ok}>OK</button>
+
+  {#if show}
+    <span>Copiado para a área de transferência</span>
+  {/if}
 </div>
+
+<input type="text" id="sumiu" bind:this={resultado} />
