@@ -5,13 +5,14 @@
     .toString()
     .padStart("2", "0")}-${hoje.getDate().toString().padStart("2", "0")}`;
 
+  let site = "";
   let link = "";
   let titulo = "";
-  let publicacao = hojestr;
+  // let publicacao = hoje.getYear() + 1900;
   let acesso = hojestr;
   let resultado = "";
   let show = false;
-  
+
   function data(date) {
     const mes = {
       1: "jan.",
@@ -27,24 +28,29 @@
       11: "nov.",
       12: "dez.",
     };
-    
+
     return `${Number(date.split("-")[2])} ${
       mes[Number(date.split("-")[1])]
     } ${Number(date.split("-")[0])}`;
   }
-  
+
   function ok() {
+    // resultado.value = `${site.toUpperCase()}. ${titulo}, ${publicacao}. Disponível em: <${link}>. Acesso em: ${data(
+    //   acesso
+    // )}.`;
+
+    resultado.value = `${site.toUpperCase()}. ${titulo}. Disponível em: \
+    <${link}>. Acesso em: ${data(acesso)}.`;
+
     show = true;
-    resultado.value = `${titulo}. [S. l.], ${data(
-      publicacao
-      )}. Disponível em: ${link}. Acesso em: ${data(acesso)}.`;
-      resultado.select();
-      resultado.setSelectionRange(0, 99999);
-      document.execCommand("copy");
-      link = "";
-      titulo = "";
-      publicacao = hojestr;
-      acesso = hojestr;
+    resultado.select();
+    resultado.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    site = "";
+    link = "";
+    titulo = "";
+    // publicacao = hoje.getYear() + 1900;
+    acesso = hojestr;
     setTimeout(() => (show = false), 3000);
   }
 </script>
@@ -93,7 +99,7 @@
 
   span {
     position: fixed;
-    margin-top: 22rem;
+    margin-top: 25rem;
     align-self: center;
   }
 </style>
@@ -104,15 +110,20 @@
     <input type="text" id="link" bind:value={link} />
   </label>
 
+  <label for="site">
+    Nome do site:
+    <input type="text" id="site" bind:value={site} />
+  </label>
+
   <label for="titulo">
     Título da página:
     <input type="text" id="titulo" bind:value={titulo} />
   </label>
 
-  <label for="publicacao">
-    Publicado em:
-    <input type="date" id="publicacao" bind:value={publicacao} />
-  </label>
+  <!-- <label for="publicacao">
+    Ano da publicação:
+    <input type="number" id="publicacao" bind:value={publicacao} />
+  </label> -->
 
   <label for="acesso">
     Acessado em:
