@@ -1,13 +1,14 @@
 <script>
   let campo = "";
   let indentacao = 2;
+  let colunas = 80;
   let resultado;
   let show = false;
 
   async function ok() {
     show = true;
     const titulo = campo.trim().toUpperCase();
-    const area = 80 - indentacao;
+    const area = colunas - indentacao;
     const texto = titulo.length + 6;
     let inicio = parseInt((area - texto) / 2);
     if (area % 2 && !titulo.length % 2) ++inicio;
@@ -55,7 +56,8 @@
     text-align: center;
   }
 
-  #indent {
+  #indent,
+  #colun {
     display: flex;
     align-items: center;
     width: 45%;
@@ -70,7 +72,7 @@
     height: 1rem;
   }
 
-  #indentacao {
+  #indentacao, #colunas {
     width: 5rem;
     font-size: 1.5rem;
     margin: 2rem 0;
@@ -103,6 +105,10 @@
       <div id="indent">
         <label for="indentacao">Indentação:</label>
         <input id="indentacao" type="number" bind:value={indentacao} />
+      </div>
+      <div id="colun">
+        <label for="colunas">Colunas:</label>
+        <input id="colunas" type="number" bind:value={colunas} />
       </div>
       <button on:click={ok}>OK</button>
     </div>
