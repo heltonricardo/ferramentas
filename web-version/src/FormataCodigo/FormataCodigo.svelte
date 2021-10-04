@@ -72,7 +72,8 @@
     height: 1rem;
   }
 
-  #indentacao, #colunas {
+  #indentacao,
+  #colunas {
     width: 5rem;
     font-size: 1.5rem;
     margin: 2rem 0;
@@ -99,7 +100,12 @@
   <div id="conteudo">
     <h3>Insira o título abaixo e pressione OK:</h3>
 
-    <input id="entrada" type="text" bind:value={campo} />
+    <input
+      id="entrada"
+      type="text"
+      bind:value={campo}
+      on:keypress={(e) => e.code === "Enter" && ok()}
+    />
 
     <div id="controle">
       <div id="indent">
