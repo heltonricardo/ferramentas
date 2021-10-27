@@ -2,7 +2,7 @@
   import FormataAbnt from "./FormataAbnt/FormataAbnt.svelte";
   import FormataCodigo from "./FormataCodigo/FormataCodigo.svelte";
 
-  let escolha = 2;
+  let escolha = 1;
 </script>
 
 <style>
